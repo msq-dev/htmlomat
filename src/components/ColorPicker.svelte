@@ -8,22 +8,21 @@
   <input id={colorName} type="color" bind:value />
 </div>
 
-<svg width="0" height="0" style="position: absolute;">
+<svg width="0" height="0">
   <defs>
     <clipPath
       id="droplet"
       clipPathUnits="objectBoundingBox"
       transform="scale(0.042 0.042)"
     >
-      <circle cx="10" cy="10" r="10" />
-      <!-- <path
+      <path
         d="M12,20
           A 6,6 0 0,1 6,14
           C 6,10 12,3.25 12,3.25
           C 12,3.25 18,10 18,14
           A 6,6 0 0,1 12,20
           Z"
-      /> -->
+      />
     </clipPath>
   </defs>
 </svg>
@@ -35,13 +34,11 @@
   }
 
   input[type="color"] {
-    --size: 3rem;
-
     -webkit-appearance: none;
     display: block;
     border: none;
-    width: var(--size);
-    height: var(--size);
+    width: 2.5rem;
+    height: 2.5rem;
     clip-path: url("#droplet");
   }
 

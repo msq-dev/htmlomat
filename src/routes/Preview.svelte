@@ -2,6 +2,7 @@
   import NewsletterEmail from "../components/NewsletterEmail.svelte"
   import PanelStyling from "../components/PanelStyling.svelte"
   import Notification from "../components/Notification.svelte"
+  import { rgbToHex } from "../other/utils"
 
   let newsletter
   let showNotification = false
@@ -21,7 +22,7 @@
   }
 
   function getHtml() {
-    const colorConvertedHtml = convertColors(newsletter.innerHTML)
+    const colorConvertedHtml = rgbToHex(newsletter.innerHTML)
     const newsletterHtml = htmlDocStart + colorConvertedHtml + htmlDocEnd
     navigator.clipboard.writeText(newsletterHtml).then(() => {
       success = true
@@ -32,27 +33,6 @@
         errorMessage = err
         handleNotification()
       }
-  }
-
-  function replacer(match) {
-    const hexValue = match
-      .replace(/[rgb()]/g, "")
-      .split(",")
-      .map((c) => componentToHex(parseInt(c)))
-      .join("")
-
-    return `#${hexValue}`
-  }
-
-  function convertColors(htmlString) {
-    const rgbRegex = /(rgb\(\d+,\s?\d+,\s?\d+\))/g
-    return htmlString.replace(rgbRegex, replacer)
-  }
-
-  // courtesy of https://stackoverflow.com/a/5624139
-  function componentToHex(c) {
-    const hex = c.toString(16)
-    return hex.length === 1 ? `0${hex}` : hex
   }
 </script>
 

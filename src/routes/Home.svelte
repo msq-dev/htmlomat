@@ -19,8 +19,22 @@
   import InputContentImage from "../components/InputContentImage.svelte"
   import InputMultiOffer from "../components/InputMultiOffer.svelte"
   import InputContentTextBlock from "../components/InputContentTextBlock.svelte"
+  import {
+    singleOffer,
+    contentImage,
+    contentTextBlock,
+  } from "../other/blueprints"
 
+  let showResetButton = true
   let showHeroImg = false
+
+  function resetNewsletter() {
+    $introParagraphs = []
+    $contentMain = []
+    $baseDiscount = 0
+    $mailOffers = []
+    showResetButton = false
+  }
 
   function handleHeroPreview() {
     showHeroImg = true
@@ -28,34 +42,6 @@
 
   function cancelHeroPreview() {
     showHeroImg = false
-  }
-
-  $: singleOffer = {
-    type: "singleOffer",
-    productName: "PRODUKT",
-    productLink: "",
-    productImgSrc: "",
-    productImgAlt: "",
-    productDesc: "",
-    priceFull: 0,
-    hasIndividualDiscount: false,
-    individualDiscount: 0,
-    amount: 0,
-    amountUnit: "",
-    ctaButtonText: "HIER BESTELLEN",
-  }
-
-  $: contentImage = {
-    type: "contentImage",
-    imageUrl: "",
-    imageAltText: "",
-    imageLinkTo: "",
-  }
-
-  $: contentTextBlock = {
-    type: "contentTextBlock",
-    headline: "",
-    text: "",
   }
 
   const contentComponents = {
@@ -68,18 +54,30 @@
     $introParagraphs = [...$introParagraphs, ""]
   }
 
+  function handleEmptyParagraph(e) {
+    if (!e.target.value) {
+      $introParagraphs = $introParagraphs.filter((p) => p !== "")
+    }
+  }
+
   function addContentItem(type) {
     const itemId = uuidv4()
     if (type === "singleOffer") {
-      $contentMain = [...$contentMain, { ...singleOffer, id: itemId }]
+      const newSingleOffer = structuredClone(singleOffer)
+      $contentMain = [
+        ...$contentMain,
+        { ...newSingleOffer, id: itemId, hasIndividualDiscount: true },
+      ]
       return
     }
     if (type === "contentImage") {
-      $contentMain = [...$contentMain, { ...contentImage, id: itemId }]
+      const newContentImage = structuredClone(contentImage)
+      $contentMain = [...$contentMain, { ...newContentImage, id: itemId }]
       return
     }
     if (type === "contentTextBlock") {
-      $contentMain = [...$contentMain, { ...contentTextBlock, id: itemId }]
+      const newContentTextBlock = structuredClone(contentTextBlock)
+      $contentMain = [...$contentMain, { ...newContentTextBlock, id: itemId }]
       return
     }
   }
@@ -91,8 +89,8 @@
   }
 
   function addOffer() {
-    singleOffer = { ...singleOffer, id: uuidv4() }
-    $mailOffers = [...$mailOffers, singleOffer]
+    const newOffer = structuredClone(singleOffer)
+    $mailOffers = [...$mailOffers, { ...newOffer, id: uuidv4() }]
   }
 
   function deleteOffer(e) {
@@ -111,12 +109,23 @@
     <div
       class="hero-preview | shadow"
       style:background-image="url({$heroImgSrc})"
-      transition:scale
+      in:scale={{ duration: 200 }}
+      out:scale={{ duration: 300 }}
     />
   {/if}
 
-  <div class="nav-buttons | shadow">
-    <a href="/preview" class="btn btn-preview | rounded" use:link>Preview</a>
+  <div class="nav-bar | shadow">
+    {#if showResetButton}
+      <span
+        class="btn btn-nav | rounded"
+        on:click={() => resetNewsletter()}
+        out:scale>Start (Beispiele löschen)</span
+      >
+    {/if}
+
+    <a href="/preview" class="btn btn-nav btn-preview | rounded" use:link
+      >Preview</a
+    >
   </div>
 
   <CollapsibleFieldset legend="Header">
@@ -133,38 +142,39 @@
   </CollapsibleFieldset>
 
   <CollapsibleFieldset legend="Intro">
-    <div class="button-group">
+    <div class="button-group | rounded">
       <button class="btn btn-add | rounded" on:click={() => addIntroParagraph()}
         >+ Absatz</button
       >
     </div>
-    <BaseInputField label="Intro Headline" bind:value={$introHeadline} />
+    <BaseInputField
+      classes="bold-text"
+      label="Intro Headline"
+      bind:value={$introHeadline}
+    />
     {#each $introParagraphs as p}
       <textarea
-        rows="3"
+        rows="4"
         bind:value={p}
         on:focus={(e) => e.target.select()}
-        on:blur={(e) => {
-          if (!e.target.value) {
-            e.target.remove()
-          }
-        }}
+        on:blur={(e) => handleEmptyParagraph(e)}
+        out:scale
       />
     {/each}
   </CollapsibleFieldset>
 
   <CollapsibleFieldset legend="Main Content">
-    <div class="button-group">
+    <div class="button-group | rounded">
       <button
-        class="btn btn-add | rounded"
+        class="btn btn-add first-btn | rounded"
         on:click={() => addContentItem("singleOffer")}>+ Angebot einzeln</button
       >
       <button
-        class="btn btn-add | rounded"
+        class="btn btn-add"
         on:click={() => addContentItem("contentImage")}>+ Bild</button
       >
       <button
-        class="btn btn-add | rounded"
+        class="btn btn-add last-btn | rounded"
         on:click={() => addContentItem("contentTextBlock")}>+ Textblock</button
       >
     </div>
@@ -182,7 +192,7 @@
   </CollapsibleFieldset>
 
   <CollapsibleFieldset legend="Offer Section">
-    <div class="button-group">
+    <div class="button-group | rounded">
       <button class="btn btn-add | rounded" on:click={() => addOffer()}
         >+ Angebot</button
       >
@@ -193,10 +203,9 @@
       unit="%"
       bind:value={$baseDiscount}
     />
-
     {#if $mailOffers.length}
-      {#each $mailOffers as offer}
-        <InputMultiOffer {offer} on:delete={(e) => deleteOffer(e)} />
+      {#each $mailOffers as item}
+        <InputMultiOffer {item} on:delete={(e) => deleteOffer(e)} />
       {/each}
     {/if}
   </CollapsibleFieldset>
@@ -215,7 +224,7 @@
   }
 
   .btn {
-    padding: 0 0.75em;
+    padding: 0 0.9em;
   }
 
   a.btn {
@@ -223,11 +232,25 @@
     color: #fff;
   }
 
-  .btn-preview {
+  .nav-bar {
+    position: fixed;
+    inset: 0 auto auto 0;
+    z-index: 50;
+    width: 100%;
+    padding: 1rem;
+    background-color: #fff;
+  }
+
+  .btn-nav {
     font-size: 80%;
+    color: #fff;
     background-color: steelblue;
     width: fit-content;
     padding: 0.35em 0.75em;
+    cursor: pointer;
+  }
+
+  .btn-preview {
     float: right;
   }
 
@@ -238,20 +261,25 @@
   }
 
   .button-group {
+    --border: 1px solid #ccc;
+
     position: absolute;
     top: 0;
     right: 1em;
     display: flex;
-    gap: 0.5em;
+    border: var(--border);
   }
 
-  .nav-buttons {
-    position: fixed;
-    inset: 0 auto auto 0;
-    z-index: 50;
-    width: 100%;
-    padding: 1rem;
-    background-color: #fff;
+  .button-group > .first-btn {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: var(--border);
+  }
+
+  .button-group > .last-btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: var(--border);
   }
 
   .hero-preview {
@@ -259,8 +287,8 @@
     top: 0;
     right: 0;
     z-index: 100;
-    width: 290px;
-    height: 328px;
+    width: calc(580px * 0.65);
+    height: calc(657px * 0.65);
     background-size: cover;
   }
 </style>

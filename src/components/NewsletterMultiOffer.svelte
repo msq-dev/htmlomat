@@ -7,10 +7,11 @@
     clrDiscount,
     clrButtons,
   } from "../stores/styling"
-  import { prettyValue, prettyPrice } from "../utils/utils"
+  import { prettyValue, prettyPrice, noBrTags } from "../other/utils"
 
   export let offer
 
+  $: productNameNoBr = noBrTags(offer.productName)
   $: priceDiscount =
     offer?.priceFull *
     (1 -
@@ -27,7 +28,7 @@
       ><img
         src={offer.productImgSrc}
         border="0"
-        alt={offer.productImgAlt || offer.productName}
+        alt={offer.productImgAlt || productNameNoBr}
         style="margin-top: 20px"
       /></a
     >
@@ -82,7 +83,7 @@
       background-color: {$clrButtons};
       font-size: 20px;
       border-radius: 9px;
-    "><strong>{$ctaBtnText}</strong></a
+    "><strong>ZUM ANGEBOT</strong></a
     >
   </td>
 {/if}

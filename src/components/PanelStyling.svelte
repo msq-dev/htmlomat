@@ -112,7 +112,7 @@
     background-color: rgb(240, 240, 240);
     border: 1px solid #aaa;
     display: grid;
-    grid-template-columns: repeat(auto-fit, 3rem);
+    grid-template-columns: repeat(auto-fit, 2rem);
     grid-template-rows: repeat(auto-fit, 3rem);
     gap: 2rem;
   }

@@ -125,7 +125,8 @@ body {
 textarea {
   font-size: 75%;
   line-height: 1.5;
-  width: 100%;
+  width: min(100% - 1rem, 70ch);
+  padding: 0 0.5em;
   margin-top: 0.5em;
 }
 
@@ -177,25 +178,6 @@ input:focus {
   position: absolute;
   left: 65%;
   color: #999;
-}
-
-.image-and-preview {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 1em;
-}
-
-.product-img-preview {
-  aspect-ratio: 1;
-  height: 215%;
-  width: fit-content;
-  place-self: center;
-  border: 1px solid #ccc;
-  border-radius: 0.5em;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #fff;
 }
 
 .no-select {

@@ -1,5 +1,5 @@
 import { writable } from "svelte/store"
-import { todaysDate } from "../utils/utils"
+import { todaysDate } from "../other/utils"
 
 export const nameCompany = writable("Manuka")
 
@@ -14,6 +14,7 @@ export const heroImgAlt = writable("Manuka Matata")
 export const introHeadline = writable("Herzlich Lorem bei Ipsum!")
 export const introParagraphs = writable([
   "Warum verlebt Sie daß ziemlich bewegen, was Thomas in fest Wesen. Nie Sie Bekanntschaft seine zu Internet eigentlich ihn, die will geringste Hemd eingeliefert. Oliver Bestechung alles zu Decke. Mit zwar den sich zu Chancen, der war über Stock das an im, sich möglichst werden bloß würden Spaß.",
+  "Das sieht beisammen sie benommen waren, stand Nase dem Vorgang gewonnen. Das auf mit setzte dieser Morgens, was diesmal immer zurück Ende. Ich eingeleitet er jenes dies erreichte wohin vernehmen er knapp, läutete über bereiteten Unterstützung seines.",
 ])
 
 export const contentMain = writable([
@@ -26,9 +27,9 @@ export const contentMain = writable([
       "https://www.manuka-honig.de/media/image/18/31/13/newsletter-manuka-health-hautpflege-lippenpflege.jpg",
     productImgAlt: "",
     productDesc:
-      "Der Lippenbalsam ist der perfekte Begleiter bei trockenen und spröden Lippen. Die Kombination aus dem hochwertigen MGO 250+ Manuka Honig und den wertvollen Inhaltsstoffen wie Jojobaöl, Weizenkeimöl, Kakaobutter und Bienenwachs bringen deine Lippen wieder zum Strahlen und machen sie wieder geschmeidig weich.",
+      "Der <b>Lippenbalsam</b> ist der perfekte Begleiter bei trockenen und spröden Lippen. Die Kombination aus dem hochwertigen <b>MGO 250+ Manuka Honig</b> und den wertvollen Inhaltsstoffen wie Jojobaöl, Weizenkeimöl, Kakaobutter und Bienenwachs bringen deine Lippen wieder zum Strahlen und machen sie wieder geschmeidig weich.",
     priceFull: 8.9,
-    hasIndividualDiscount: false,
+    hasIndividualDiscount: true,
     individualDiscount: 20,
     amount: 4.5,
     amountUnit: "g",
@@ -47,8 +48,14 @@ export const contentMain = writable([
   {
     type: "contentTextBlock",
     headline: "Den ganzen Tag lang ganz viel Honig essen",
-    text: "Der Ihnen sein es der solche. Ich verschiedenen heute niedrigem Börse des, das der Dienste Jahre dafür ein, das geringste für aber begleitet. Parallel irgendeine nach stehengeblieben gestiftet, und Weilchen weiter seine Händen Kopf, ob leicht haben nun Jungen, wohl Prozesse zurückgeben überfallen dem sich Privatisierung, denkend seine zu einigen Entstehen Wächter plötzlich, daß nicht mit das zwar.",
+    text: "Der Ihnen sein es der solche. Ich verschiedenen heute niedrigem Börse des, das der Dienste Jahre dafür ein, das geringste für aber begleitet. Parallel irgendeine nach stehengeblieben gestiftet, und Weilchen weiter seine Händen Kopf, ob leicht haben nun Jungen, wohl Prozesse zurückgeben überfallen dem sich Privatisierung, denkend seine zu einigen.",
     id: "lkwjt934ni943nn4-3345634",
+  },
+  {
+    type: "contentTextBlock",
+    headline: "",
+    text: "Die Blick sie sein Kinde Sache die, dessen hätte und unternehmerisch dem, ohne Sie Börsenkurse wiederum die war. Er nun höchst ist eine seinem, es mit Gewerkschaften die Franz aufatmend, wenn ins halb Zeit gehen, ohne einmal mir den saß.",
+    id: "lkwjt934ndfughdfuihg5634",
   },
 ])
 
@@ -61,7 +68,7 @@ export const mailOffers = writable([
     productImgSrc:
       "https://www.manuka-honig.de/media/image/4d/86/6a/nl-oster-rabatte-kanuka-balsam.jpg",
     productName: "Example's 3er Pack Mix Manuka Honig Lutschbonbons",
-    productImgAlt: "Product Image Alt Text",
+    productImgAlt: "",
     priceFull: 47.11,
     hasIndividualDiscount: false,
     individualDiscount: 16,
@@ -75,10 +82,10 @@ export const mailOffers = writable([
     productImgSrc:
       "https://www.manuka-honig.de/media/image/5f/39/07/nl-oster-rabatte-haddrells-3er-set-bonbons.jpg",
     productName: "Example's Starterset Manuka Honig MGO 250+ (250g) + Bonbons",
-    productImgAlt: "Product Image Alt Text",
+    productImgAlt: "",
     priceFull: 123.45,
-    hasIndividualDiscount: false,
-    individualDiscount: 16,
+    hasIndividualDiscount: true,
+    individualDiscount: 20,
     amount: 65,
     amountUnit: "ml",
     id: "dosdfigh-sdhgf-845sdgsd7bsd",

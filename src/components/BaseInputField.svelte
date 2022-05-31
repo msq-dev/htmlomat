@@ -26,14 +26,14 @@
 </script>
 
 <div class="input-group {classes}">
-  <label for={labelId}
+  <label for={labelId} class="no-select"
     >{label}{#if info}&nbsp;<span class="info">({info})</span>{/if}</label
   >
   {#if type === "text"}
     <input
       type="text"
       id={labelId}
-      class="text-input"
+      placeholder={label}
       bind:value
       on:focus={(e) => handleFocus(e)}
     />
@@ -41,7 +41,6 @@
     <input
       type="url"
       id={labelId}
-      class="url-input"
       bind:value
       on:focus={(e) => handleFocus(e)}
     />
@@ -50,7 +49,6 @@
       <input
         type="number"
         id={labelId}
-        class="number-input"
         bind:value
         on:focus={(e) => handleFocus(e)}
       />
@@ -64,16 +62,19 @@
       on:mouseenter={() => gimmePreview()}
       on:mouseleave={() => getridPreview()}
     />
-  {:else if type === "imgUrl"}
-    <div class="image-and-preview">
-      <input
-        type="url"
-        id={labelId}
-        class="product-img-input"
-        bind:value
-        on:focus={(e) => handleFocus(e)}
-      />
-      <div class="product-img-preview" style:background-image="url({value})" />
-    </div>
   {/if}
 </div>
+
+<style>
+  input::placeholder {
+    color: transparent;
+  }
+
+  .input-group.bold-text input {
+    font-weight: 700;
+  }
+
+  .input-group.input-alt-text input:placeholder-shown {
+    border-color: tomato;
+  }
+</style>

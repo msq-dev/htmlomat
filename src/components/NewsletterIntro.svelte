@@ -19,16 +19,19 @@
     </h1>
   </td>
 </tr>
-{#each $introParagraphs as p}
-  {#if p}
+{#if $introParagraphs.length}
+  {#each $introParagraphs as p, index}
     <tr>
       <td>
         <p
-          style="padding: 0 30px 0 30px; margin: 0; font-size: {$fsText}px; line-height: {$lhText}px; font-family: Arial; color: {$clrText}; text-align: center;"
+          style="padding: {index === 0 ? 0 : 15}px 30px {index ===
+          $introParagraphs.length - 1
+            ? 20
+            : 0}px 30px; margin: 0; font-size: {$fsText}px; line-height: {$lhText}px; font-family: Arial; color: {$clrText}; text-align: center;"
         >
-          {p}
+          {@html p}
         </p>
       </td>
     </tr>
-  {/if}
-{/each}
+  {/each}
+{/if}
