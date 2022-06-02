@@ -1,6 +1,6 @@
 <script>
-  import BaseInputItem from "./BaseInputItem.svelte"
-  import BaseInputField from "./BaseInputField.svelte"
+  import BaseInputItem from "../BaseInputItem.svelte"
+  import BaseInputField from "../BaseInputField.svelte"
   import InputGroupImage from "./InputGroupImage.svelte"
 
   export let item
@@ -15,7 +15,7 @@
     ></svelte:fragment
   >
   <svelte:fragment slot="content">
-    <InputGroupImage imgUrl={item.imageUrl} altText={item.imageAltText} />
+    <InputGroupImage imgUrl={item.imageUrl} />
     <BaseInputField label="Image Alt Text" bind:value={item.imageAltText} />
     <BaseInputField
       type="url"

@@ -1,5 +1,5 @@
 <script>
-  import { mailTitle } from "../stores/newsletter"
+  import { mailTitle } from "../../stores/newsletter"
 </script>
 
 <tr>

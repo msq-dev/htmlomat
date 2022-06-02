@@ -1,5 +1,5 @@
 <script>
-  import { introHeadline, introParagraphs } from "../stores/newsletter"
+  import { introHeadline, introParagraphs } from "../../stores/newsletter"
   import {
     clrText,
     clrAccent,
@@ -7,7 +7,7 @@
     lhHeadline,
     fsText,
     lhText,
-  } from "../stores/styling"
+  } from "../../stores/styling"
 </script>
 
 <tr>
@@ -27,9 +27,9 @@
           style="padding: {index === 0 ? 0 : 15}px 30px {index ===
           $introParagraphs.length - 1
             ? 20
-            : 0}px 30px; margin: 0; font-size: {$fsText}px; line-height: {$lhText}px; font-family: Arial; color: {$clrText}; text-align: center;"
+            : 0}px 30px; margin: 0; font-size: {$fsText}px; line-height: {$lhText}px; font-family: Arial; color: {$clrText}; text-align: {p.align};"
         >
-          {@html p}
+          {@html p.text}
         </p>
       </td>
     </tr>

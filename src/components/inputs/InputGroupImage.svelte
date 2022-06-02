@@ -1,5 +1,6 @@
 <script>
   export let imgUrl = ""
+  export let label = ""
   export let product = false
 
   function handleFocus(e) {
@@ -8,11 +9,11 @@
 </script>
 
 <div class="input-group">
-  <label for="productimage">{product ? "Product " : ""}Image Url</label>
+  <label for="image">{product ? "Product " : `${label} `}Image Url</label>
   <div class="image-and-preview">
     <input
       type="url"
-      id="productimage"
+      id="image"
       bind:value={imgUrl}
       on:focus={(e) => handleFocus(e)}
     />

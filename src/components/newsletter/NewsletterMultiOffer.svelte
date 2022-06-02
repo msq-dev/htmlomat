@@ -1,13 +1,13 @@
 <script>
-  import { baseDiscount, ctaBtnText } from "../stores/newsletter"
+  import { baseDiscount } from "../../stores/newsletter"
   import {
     clrText,
     clrAccent,
     clrLight,
     clrDiscount,
     clrButtons,
-  } from "../stores/styling"
-  import { prettyValue, prettyPrice, noBrTags } from "../other/utils"
+  } from "../../stores/styling"
+  import { prettyValue, prettyPrice, noBrTags } from "../../helpers/utils"
 
   export let offer
 

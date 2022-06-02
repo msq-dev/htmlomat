@@ -10,7 +10,7 @@ export const singleOffer = {
   individualDiscount: 0,
   amount: 0,
   amountUnit: "",
-  ctaButtonText: "",
+  ctaText: "",
 }
 
 export const contentImage = {
@@ -23,5 +23,8 @@ export const contentImage = {
 export const contentTextBlock = {
   type: "contentTextBlock",
   headline: "",
-  text: "",
+  body: {
+    text: "",
+    align: "center",
+  },
 }

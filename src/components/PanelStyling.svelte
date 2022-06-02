@@ -9,6 +9,8 @@
     fsText,
   } from "../stores/styling"
   import ColorPicker from "./ColorPicker.svelte"
+  import IconArrowLeft from "./icons/IconArrowLeft.svelte"
+  import IconArrowRight from "./icons/IconArrowRight.svelte"
 
   let panelOpen = false
 
@@ -52,21 +54,11 @@
     </div>
   </div>
   <div class="trigger" on:click={() => triggerPanel()}>
-    <svg
-      class="svg-icon"
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="#fff"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      ><circle cx="12" cy="12" r="10" /><polyline
-        points="12 8 8 12 12 16"
-      /><line x1="16" y1="12" x2="8" y2="12" /></svg
-    >
+    {#if panelOpen}
+      <IconArrowLeft strokeColor="#ffffff" />
+    {:else}
+      <IconArrowRight strokeColor="#ffffff" />
+    {/if}
   </div>
 </div>
 
@@ -118,24 +110,14 @@
   }
 
   .trigger {
-    background-color: rgb(57, 180, 0);
+    background-color: #4597ff;
     padding: 0.5rem;
     font-size: 1.5rem;
     height: fit-content;
     cursor: pointer;
   }
 
-  .svg-icon {
-    display: block;
-    transform: rotate(180deg);
-    transition: transform 400ms;
-  }
-
   .panelOpen {
     transform: translateX(0);
-  }
-
-  .panelOpen .svg-icon {
-    transform: rotate(0);
   }
 </style>

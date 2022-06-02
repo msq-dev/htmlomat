@@ -1,9 +1,10 @@
 <script>
-  import BaseInputItem from "./BaseInputItem.svelte"
-  import BaseInputField from "./BaseInputField.svelte"
+  import BaseInputItem from "../BaseInputItem.svelte"
+  import BaseInputField from "../BaseInputField.svelte"
+  import InputGroupTextarea from "./InputGroupTextarea.svelte"
   import InputGroupImage from "./InputGroupImage.svelte"
   import InputGroupAmount from "./InputGroupAmount.svelte"
-  import { noBrTags } from "../other/utils"
+  import { noBrTags } from "../../helpers/utils"
 
   export let item
 
@@ -29,12 +30,9 @@
       bind:value={item.productImgAlt}
     />
 
-    <label for="productDescription" class="mt-1">Product Description</label>
-    <textarea
-      id="productDescription"
-      rows="5"
+    <InputGroupTextarea
+      label="Product Description"
       bind:value={item.productDesc}
-      on:focus={(e) => e.target.select()}
     />
 
     <div class="price-grid">
@@ -53,7 +51,7 @@
       />
       <InputGroupAmount {item} />
     </div>
-    <BaseInputField label="CTA Button Text" bind:value={item.ctaButtonText} />
+    <BaseInputField label="CTA" bind:value={item.ctaText} />
   </svelte:fragment>
 </BaseInputItem>
 

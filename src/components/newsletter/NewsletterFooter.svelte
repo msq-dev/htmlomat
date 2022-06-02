@@ -1,5 +1,5 @@
 <script>
-  import { clrText } from "../stores/styling"
+  import { clrText } from "../../stores/styling"
 </script>
 
 <table

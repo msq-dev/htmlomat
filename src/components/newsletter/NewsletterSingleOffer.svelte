@@ -6,8 +6,8 @@
     clrDiscount,
     fsText,
     lhText,
-  } from "../stores/styling"
-  import { prettyPrice, prettyValue, noBrTags } from "../other/utils"
+  } from "../../stores/styling"
+  import { prettyPrice, prettyValue, noBrTags } from "../../helpers/utils"
 
   export let item = {}
 
@@ -37,15 +37,18 @@
     </td>
   </tr>
 
-  <tr>
-    <td
-      style="padding: 0 40px 0 40px; font-size: {$fsText}px; line-height: {$lhText}px; font-family: Arial; color: {$clrText}; text-align: center;"
-    >
-      <p>
-        {@html item.productDesc}
-      </p>
-    </td>
-  </tr>
+  {#if item.productDesc}
+    <tr>
+      <td
+        style="padding: 0 40px 0 40px; font-size: {$fsText}px; line-height: {$lhText}px; font-family: Arial; color: {$clrText}; text-align: {item
+          .productDesc.align};"
+      >
+        <p>
+          {@html item.productDesc.text}
+        </p>
+      </td>
+    </tr>
+  {/if}
 
   <tr>
     <td>
@@ -86,7 +89,7 @@
     </td>
   </tr>
 
-  {#if item.ctaButtonText}
+  {#if item.ctaText}
     <tr>
       <td>
         <table cellspacing="0" cellpadding="0" border="0">
@@ -98,7 +101,7 @@
                   href={item.productLink}
                   target="_blank"
                   style="width: 278px; height: 30px; display: block; margin: 20px 0 70px 0; padding: 20px; color: #ffffff; text-align: center; text-decoration: none; background-color: {$clrAccent}; font-size: 25px; border-radius: 9px;"
-                  ><strong>{item.ctaButtonText}</strong></a
+                  ><strong>{item.ctaText}</strong></a
                 >
               </td>
             </tr>

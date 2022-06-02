@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte"
-  import { mailOffers } from "../stores/newsletter"
+  import { mailOffers } from "../../stores/newsletter"
   import NewsletterMultiOffer from "./NewsletterMultiOffer.svelte"
 
   let chunksArray = []

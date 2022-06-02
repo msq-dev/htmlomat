@@ -1,9 +1,14 @@
 <script>
-  import { clrText, clrAccent, fsHeadline, lhHeadline } from "../stores/styling"
+  import {
+    clrText,
+    clrAccent,
+    fsHeadline,
+    lhHeadline,
+  } from "../../stores/styling"
   export let item
 </script>
 
-{#if item.text}
+{#if item.body.text}
   {#if item.headline}
     <tr>
       <td
@@ -19,10 +24,11 @@
   {/if}
   <tr>
     <td
-      style="padding: 0; font-size: 17px; line-height: 28px; font-family: Arial; color: {$clrText}; text-align: center;"
+      style="padding: 0; font-size: 17px; line-height: 28px; font-family: Arial; color: {$clrText}; text-align: {item
+        .body.align};"
     >
       <p style="padding: 0 40px 10px 40px; margin-top: -10px; ">
-        {@html item.text}
+        {@html item.body.text}
       </p></td
     >
   </tr>

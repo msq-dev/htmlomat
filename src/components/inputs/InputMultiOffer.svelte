@@ -1,6 +1,6 @@
 <script>
-  import BaseInputItem from "./BaseInputItem.svelte"
-  import BaseInputField from "./BaseInputField.svelte"
+  import BaseInputItem from "../BaseInputItem.svelte"
+  import BaseInputField from "../BaseInputField.svelte"
   import InputGroupImage from "./InputGroupImage.svelte"
   import InputGroupAmount from "./InputGroupAmount.svelte"
 

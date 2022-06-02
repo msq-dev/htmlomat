@@ -1,12 +1,11 @@
 <script>
-  import Router from "svelte-spa-router"
-  import Home from "./routes/Home.svelte"
-  import Preview from "./routes/Preview.svelte"
-
-  const routes = {
-    "/": Home,
-    "/preview": Preview,
-  }
+  import { previewMode } from "./stores/editor"
+  import Editor from "./components/Editor.svelte"
+  import Preview from "./components/Preview.svelte"
 </script>
 
-<Router {routes} />
+{#if $previewMode}
+  <Preview />
+{:else}
+  <Editor />
+{/if}

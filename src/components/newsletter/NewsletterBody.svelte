@@ -1,6 +1,6 @@
 <script>
-  import { contentMain } from "../stores/newsletter"
-  import { clrText } from "../stores/styling"
+  import { contentMain } from "../../stores/newsletter"
+  import { clrText } from "../../stores/styling"
   import NewsletterHeader from "./NewsletterHeader.svelte"
   import NewsletterHero from "./NewsletterHero.svelte"
   import NewsletterIntro from "./NewsletterIntro.svelte"

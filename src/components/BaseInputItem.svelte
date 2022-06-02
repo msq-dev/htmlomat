@@ -1,6 +1,5 @@
 <script>
   import { createEventDispatcher } from "svelte"
-  import { scale } from "svelte/transition"
 
   export let id = ""
 
@@ -13,7 +12,7 @@
   }
 </script>
 
-<details class="input-item | rounded" out:scale>
+<details class="input-item | rounded">
   <summary class="item-title | no-select">
     <slot name="title">Item Title</slot>
     <button class="delete" on:click={() => deleteItem()}>&times;</button>

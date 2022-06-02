@@ -1,8 +1,10 @@
 <script>
-  import NewsletterEmail from "../components/NewsletterEmail.svelte"
-  import PanelStyling from "../components/PanelStyling.svelte"
-  import Notification from "../components/Notification.svelte"
-  import { rgbToHex } from "../other/utils"
+  import { fade } from "svelte/transition"
+  import { previewMode } from "../stores/editor"
+  import NewsletterEmail from "./newsletter/NewsletterEmail.svelte"
+  import PanelStyling from "./PanelStyling.svelte"
+  import Notification from "./Notification.svelte"
+  import { rgbToHex } from "../helpers/utils"
 
   let newsletter
   let showNotification = false
@@ -40,19 +42,35 @@
   <Notification {success} {errorMessage} />
 {/if}
 
-<PanelStyling />
-<button class="get-html" on:click={() => getHtml()}>HTML</button>
-<div bind:this={newsletter}><NewsletterEmail /></div>
+<span in:fade={{ duration: 200, delay: 300 }} out:fade={{ duration: 200 }}>
+  <PanelStyling />
+
+  <div class="controls">
+    <button
+      class="get-html"
+      style="background-color: tomato;"
+      on:click={() => ($previewMode = false)}>zurück</button
+    >
+    <button class="get-html" on:click={() => getHtml()}>HTML</button>
+  </div>
+  <div bind:this={newsletter}><NewsletterEmail /></div>
+</span>
 
 <style>
-  .get-html {
+  .controls {
     position: fixed;
     top: 1em;
     right: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .get-html {
+    color: #fff;
     border: none;
     background: none;
-    color: #fff;
-    background-color: rgb(57, 180, 0);
+    background-color: #4597ff;
     padding: 0.35em 0.75em;
     border-radius: 0.5em;
     letter-spacing: 0.1em;

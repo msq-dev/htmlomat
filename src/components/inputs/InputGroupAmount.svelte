@@ -1,7 +1,7 @@
 <script>
-  import { baseDiscount } from "../stores/newsletter"
-  import BaseInputField from "./BaseInputField.svelte"
-  import { prettyPrice } from "../other/utils"
+  import { baseDiscount } from "../../stores/newsletter"
+  import BaseInputField from "../BaseInputField.svelte"
+  import { prettyPrice } from "../../helpers/utils"
 
   export let item = {}
 
@@ -48,6 +48,7 @@
 
   .output-group {
     grid-column: 2;
+    align-self: end;
   }
 
   .output-group > div {

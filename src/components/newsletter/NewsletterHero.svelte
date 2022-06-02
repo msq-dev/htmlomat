@@ -1,5 +1,5 @@
 <script>
-  import { offerPage, heroImgSrc, heroImgAlt } from "../stores/newsletter"
+  import { offerPage, heroImgSrc, heroImgAlt } from "../../stores/newsletter"
 </script>
 
 <tr>

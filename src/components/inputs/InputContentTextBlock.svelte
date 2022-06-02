@@ -1,6 +1,7 @@
 <script>
-  import BaseInputItem from "./BaseInputItem.svelte"
-  import BaseInputField from "./BaseInputField.svelte"
+  import BaseInputItem from "../BaseInputItem.svelte"
+  import BaseInputField from "../BaseInputField.svelte"
+  import InputGroupTextarea from "./InputGroupTextarea.svelte"
 
   export let item
 </script>
@@ -15,10 +16,6 @@
       label="Headline"
       bind:value={item.headline}
     />
-    <textarea
-      rows="5"
-      bind:value={item.text}
-      on:focus={(e) => e.target.select()}
-    />
+    <InputGroupTextarea bind:value={item.body} />
   </svelte:fragment>
 </BaseInputItem>
