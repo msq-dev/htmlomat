@@ -47,3 +47,7 @@ export function rgbToHex(htmlString) {
     return hex.length === 1 ? `0${hex}` : hex
   }
 }
+
+export function isImage(url) {
+  return /jpe?g|png|gif/gm.test(url.toLowerCase())
+}

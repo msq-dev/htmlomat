@@ -1,11 +1,30 @@
 <script>
+  import { htmlomat } from "./stores/settings"
   import { previewMode } from "./stores/editor"
-  import Editor from "./components/Editor.svelte"
-  import Preview from "./components/Preview.svelte"
+  import EditorNewsletter from "./components/EditorNewsletter.svelte"
+  import PreviewNewsletter from "./components/PreviewNewsletter.svelte"
+  import EditorLandingpage from "./components/EditorLandingpage.svelte"
+  import PreviewLandingpage from "./components/PreviewLandingpage.svelte"
+
+  const previews = {
+    newsletter: PreviewNewsletter,
+    landingpage: EditorLandingpage,
+    // landingpage: PreviewLandingpage,
+  }
+
+  const editors = {
+    newsletter: EditorNewsletter,
+    landingpage: EditorLandingpage,
+  }
 </script>
 
+{#if !$htmlomat}
+  <button on:click={() => ($htmlomat = "landingpage")}>Landingpage</button>
+  <button on:click={() => ($htmlomat = "newsletter")}>Newsletter</button>
+{/if}
+
 {#if $previewMode}
-  <Preview />
+  <svelte:component this={previews[$htmlomat]} />
 {:else}
-  <Editor />
+  <svelte:component this={editors[$htmlomat]} />
 {/if}

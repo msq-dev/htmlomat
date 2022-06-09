@@ -1,5 +1,7 @@
 <script>
+  import { onMount } from "svelte"
   import {
+    colorScheme,
     clrText,
     clrAccent,
     clrDiscount,
@@ -7,6 +9,7 @@
     clrLight,
     fsHeadline,
     fsText,
+    switchPrices,
   } from "../stores/styling"
   import ColorPicker from "./ColorPicker.svelte"
   import IconArrowLeft from "./icons/IconArrowLeft.svelte"
@@ -17,15 +20,22 @@
   function triggerPanel() {
     panelOpen = !panelOpen
   }
+
+  onMount(() => {
+    if ($colorScheme === "health") {
+      $clrAccent = "#004c9a"
+      $clrButtons = "#004c9a"
+    }
+  })
 </script>
 
 <div class="wrapper" class:panelOpen>
   <div class="styling-panel">
-    <ColorPicker colorName="Text" bind:value={$clrText} />
+    <!-- <ColorPicker colorName="Text" bind:value={$clrText} /> -->
     <ColorPicker colorName="Accent" bind:value={$clrAccent} />
     <ColorPicker colorName="Discount" bind:value={$clrDiscount} />
     <ColorPicker colorName="Buttons" bind:value={$clrButtons} />
-    <ColorPicker colorName="Light" bind:value={$clrLight} />
+    <!-- <ColorPicker colorName="Light" bind:value={$clrLight} /> -->
     <div class="input-group">
       <label for="fontSizeHeadline">Font-size Headline</label>
       <div class="range-group">
@@ -51,6 +61,15 @@
         />
         <span>{$fsText}px</span>
       </div>
+    </div>
+    <div class="input-group">
+      <label for="switchPrices"
+        ><input
+          type="checkbox"
+          id="switchPrices"
+          bind:checked={$switchPrices}
+        />&nbsp;Switch prices</label
+      >
     </div>
   </div>
   <div class="trigger" on:click={() => triggerPanel()}>

@@ -6,8 +6,11 @@
     clrLight,
     clrDiscount,
     clrButtons,
+    switchPrices,
   } from "../../stores/styling"
   import { prettyValue, prettyPrice, noBrTags } from "../../helpers/utils"
+  import { fontFamily } from "../../helpers/styles"
+  import { isImage } from "../../helpers/utils"
 
   export let offer
 
@@ -22,44 +25,68 @@
   $: pricePerHundred = (priceDiscount / offer?.amount) * 100
 </script>
 
-{#if offer}
+{#if offer && offer.productName.toLowerCase() !== "produkt"}
   <td width="222" valign="top">
-    <a href={offer.productLink} target="_blank"
-      ><img
-        src={offer.productImgSrc}
-        border="0"
-        alt={offer.productImgAlt || productNameNoBr}
-        style="margin-top: 20px"
-      /></a
-    >
+    {#if isImage(offer.productImgSrc)}
+      <a href={offer.productLink} target="_blank"
+        ><img
+          src={offer.productImgSrc}
+          border="0"
+          alt={offer.productImgAlt || productNameNoBr}
+          style="margin: 24px 0px 0px 0px"
+        /></a
+      >
+    {/if}
     <h3
       style="
-      text-align: center;
+      {fontFamily};
       font-size: 20px;
+      line-height: 24px;
+      text-align: center;
       color: {$clrText};
-    "
+      "
     >
       {@html offer.productName}
     </h3>
     <p
       style="
-      color: {$clrDiscount};
+      {fontFamily};
       font-size: 20px;
       text-align: center;
-    "
+      color: {$clrDiscount};
+      "
     >
-      <b>{prettyPrice(priceDiscount)}</b>
-      <span
-        style="
+      {#if $switchPrices}
+        <span
+          style="
+      {fontFamily};
+      color: #000000;
+      text-decoration: line-through;
+      color: {$clrText};
+      font-size: 24px
+      "
+        >
+          <b>{prettyPrice(offer.priceFull)}</b></span
+        >
+        <b>{prettyPrice(priceDiscount)}</b>
+      {:else}
+        <b>{prettyPrice(priceDiscount)}</b>
+        <span
+          style="
+        {fontFamily};
         color: #000000;
         text-decoration: line-through;
         color: {$clrText};
-      "
-      >
-        {prettyPrice(offer.priceFull)}</span
-      ><br />
+        "
+        >
+          {prettyPrice(offer.priceFull)}</span
+        >
+      {/if}
+
+      <br />
       <span
         style="
+        {fontFamily};
         font-size: 15px;
         color: {$clrLight};
         text-align: center;
@@ -72,16 +99,17 @@
       href={offer.productLink}
       target="_blank"
       style="
+      {fontFamily};
+      text-align: center;
+      text-decoration: none;
+      font-size: 20px;
       width: 224px;
       height: 30px;
       display: block;
-      margin: 20px 0 20px 0;
-      padding: 16px 0 10px 0;
+      padding: 14px 0px 10px 0px;
+      margin: 24px 0px 24px 0px;
       color: #ffffff;
-      text-align: center;
-      text-decoration: none;
       background-color: {$clrButtons};
-      font-size: 20px;
       border-radius: 9px;
     "><strong>ZUM ANGEBOT</strong></a
     >

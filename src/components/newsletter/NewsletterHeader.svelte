@@ -1,5 +1,6 @@
 <script>
   import { mailTitle } from "../../stores/newsletter"
+  import { fontFamily } from "../../helpers/styles"
 </script>
 
 <tr>
@@ -8,7 +9,7 @@
       <tr>
         <td width="169" height="150">&nbsp;</td>
         <td width="304">
-          <p style="font-family: Arial; font-size: 7pt">
+          <p style="{fontFamily}; font-size: 10px">
             {$mailTitle}
             <a href="&#123;ONLINE_VERSION&#125;">Online-Version</a>
           </p>
@@ -19,7 +20,7 @@
               width="261"
               height="120"
               alt="Logo Manuka"
-              style="margin-top: 13px"
+              style="margin: 12px 0px 12px 0px"
             /></a
           >
         </td>

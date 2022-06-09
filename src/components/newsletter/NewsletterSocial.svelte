@@ -2,22 +2,12 @@
   import { clrText } from "../../stores/styling"
 </script>
 
-<!-- <tr>
-  <td>
-    <img
-      src="https://www.manuka-honig.de/media/image/a0/66/d3/flower.jpg"
-      alt="Manuka Flower"
-      style="margin: 30px 0 0 50px"
-    />
-  </td>
-</tr> -->
-
 <tr>
   <td
     style="
-        padding: 10px 0 0 0;
+        padding: 48px 0px 0px 0px;
         font-size: 17px;
-        line-height: 26px;
+        line-height: 24px;
         font-family: Arial;
         color: {$clrText};
         text-align: center;
@@ -28,7 +18,7 @@
           font-family: Arial;
           color: {$clrText};
           font-size: 28px;
-          line-height: 34px;
+          line-height: 32px;
           margin-bottom: 20px;
         "
     >
@@ -48,8 +38,8 @@
             <img
               src="https://www.manuka-honig.de/media/image/5a/ea/e4/facebook.png"
               border="0"
-              width="79"
-              height="69"
+              width="69"
+              height="59"
               alt="Folge uns auf Facebook"
             />
           </a>
@@ -63,8 +53,8 @@
             <img
               src="https://www.manuka-honig.de/media/image/10/b8/9c/instagram.png"
               border="0"
-              width="79"
-              height="69"
+              width="69"
+              height="59"
               alt="Folge uns auf Instagram"
             />
           </a>

@@ -6,17 +6,22 @@
     showResetButton,
   } from "../stores/editor"
   import {
+    mailTitle,
+    landingpage,
+    heroImgSrc,
+    heroImgAlt,
+    introHeadline,
     introParagraphs,
     contentMain,
     baseDiscount,
     mailOffers,
   } from "../stores/newsletter"
   import NavSidebar from "./NavSidebar.svelte"
-  import SectionInputHeader from "./SectionInputHeader.svelte"
-  import SectionInputIntro from "./SectionInputIntro.svelte"
-  import SectionInputMainContent from "./SectionInputMainContent.svelte"
-  import SectionInputOffers from "./SectionInputOffers.svelte"
   import BaseButton from "./BaseButton.svelte"
+  import SectionInputHeader from "./inputs/SectionInputHeader.svelte"
+  import SectionInputIntro from "./inputs/SectionInputIntro.svelte"
+  import SectionInputMainContent from "./inputs/SectionInputMainContent.svelte"
+  import SectionInputOffers from "./inputs/SectionInputOffers.svelte"
 
   const sections = {
     header: SectionInputHeader,
@@ -26,6 +31,11 @@
   }
 
   function resetNewsletter() {
+    $mailTitle = ""
+    $landingpage = ""
+    $heroImgSrc = ""
+    $heroImgAlt = ""
+    $introHeadline = ""
     $introParagraphs = []
     $contentMain = []
     $baseDiscount = 0
@@ -40,6 +50,7 @@
 
 <svelte:head>
   <link rel="stylesheet" href="./global.css" />
+  <link rel="stylesheet" href="./newsletter.css" />
 </svelte:head>
 
 <span in:fade={{ duration: 200, delay: 300 }} out:fade={{ duration: 200 }}>

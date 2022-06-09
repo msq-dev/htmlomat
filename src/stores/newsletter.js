@@ -1,10 +1,12 @@
 import { writable } from "svelte/store"
 import { todaysDate } from "../helpers/utils"
+import { BASE_URL } from "./editor"
 
 export const nameCompany = writable("Manuka")
 
 export const mailTitle = writable(`Ihr Newsletter vom ${todaysDate()}`)
-export const offerPage = writable("https://www.manuka-honig.de/angebote/")
+// export const landingpage = writable(BASE_URL + "/landingpage")
+export const landingpage = writable("https://www.manuka-honig.de/angebote")
 export const heroImgSrc = writable(
   "https://www.manuka-honig.de/media/image/48/9e/2f/newsletter-manuka-health-hautpflege-header.jpg"
 )

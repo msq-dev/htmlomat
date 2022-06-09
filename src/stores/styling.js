@@ -1,5 +1,7 @@
 import { writable, derived } from "svelte/store"
 
+export const colorScheme = writable("health")
+
 export const clrText = writable("#535d68")
 export const clrAccent = writable("#004f9c")
 export const clrDiscount = writable("#e00000")
@@ -14,3 +16,5 @@ export const lhHeadline = derived(
 
 export const fsText = writable(17)
 export const lhText = derived(fsText, ($fsText) => $fsText * 1.5)
+
+export const switchPrices = writable(true)

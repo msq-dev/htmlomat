@@ -1,9 +1,10 @@
 <script>
   import { v4 as uuidv4 } from "uuid"
-  import { baseDiscount, mailOffers } from "../stores/newsletter"
-  import BaseInputField from "./BaseInputField.svelte"
-  import InputFieldset from "./inputs/InputFieldset.svelte"
-  import InputMultiOffer from "./inputs/InputMultiOffer.svelte"
+  import { baseDiscount, mailOffers } from "../../stores/newsletter"
+  import InputNumber from "./InputNumber.svelte"
+  import InputFieldset from "./InputFieldset.svelte"
+  import InputMultiOffer from "./InputMultiOffer.svelte"
+  import { singleOffer } from "../../helpers/blueprints"
 
   function addOffer() {
     const newOffer = structuredClone(singleOffer)
@@ -17,18 +18,13 @@
   }
 </script>
 
-<InputFieldset legend="Offer Section">
+<InputFieldset legend="Angebote">
   <div class="button-group | rounded">
     <button class="btn btn-add | rounded" on:click={() => addOffer()}
-      >+ Angebot</button
+      >Angebot</button
     >
   </div>
-  <BaseInputField
-    type="number"
-    label="Hauptrabatt"
-    unit="%"
-    bind:value={$baseDiscount}
-  />
+  <InputNumber label="Hauptrabatt" unit="%" bind:value={$baseDiscount} />
   {#if $mailOffers.length}
     {#each $mailOffers as item}
       <InputMultiOffer {item} on:delete={(e) => deleteOffer(e)} />

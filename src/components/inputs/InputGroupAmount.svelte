@@ -1,6 +1,6 @@
 <script>
   import { baseDiscount } from "../../stores/newsletter"
-  import BaseInputField from "../BaseInputField.svelte"
+  import InputNumber from "./InputNumber.svelte"
   import { prettyPrice } from "../../helpers/utils"
 
   export let item = {}
@@ -14,12 +14,7 @@
 </script>
 
 <div class="amount-group">
-  <BaseInputField
-    classes="inline | mt-1"
-    type="number"
-    label="Menge"
-    bind:value={item.amount}
-  />
+  <InputNumber label="Menge" class_="inline" bind:value={item.amount} />
   <label class="inline">
     <input type="radio" bind:group={item.amountUnit} value={"ml"} />
     Milliliter

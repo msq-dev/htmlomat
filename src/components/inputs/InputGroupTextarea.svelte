@@ -6,8 +6,9 @@
   import BaseButton from "../BaseButton.svelte"
 
   export let label = ""
-  export let value = {}
+  export let value = ""
   export let rows = 5
+  export let isIntro = false
 
   const iconSize = 20
   const iconStroke = 1
@@ -19,8 +20,8 @@
   }
 
   function handleEmptyParagraph(e) {
-    if (!e.target.value) {
-      $introParagraphs = $introParagraphs.filter((p) => p !== "")
+    if (!e.target.value && isIntro) {
+      $introParagraphs = $introParagraphs.filter((p) => p.text !== "")
     }
   }
 </script>

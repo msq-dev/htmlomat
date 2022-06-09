@@ -56,11 +56,11 @@
 
   .middle-btn {
     border-radius: 0;
+    border-right: 1px solid #ccc;
   }
 
   .last-btn {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    border-left: 1px solid #ccc;
   }
 </style>

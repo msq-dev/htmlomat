@@ -1,23 +1,20 @@
 <script>
-  export let imgUrl = ""
   export let label = ""
   export let product = false
-
-  function handleFocus(e) {
-    e.target.select()
-  }
+  export let value = ""
 </script>
 
 <div class="input-group">
   <label for="image">{product ? "Product " : `${label} `}Image Url</label>
   <div class="image-and-preview">
     <input
+      class="url-input"
       type="url"
       id="image"
-      bind:value={imgUrl}
-      on:focus={(e) => handleFocus(e)}
+      bind:value
+      on:focus={(e) => e.target.select()}
     />
-    <div class="product-img-preview" style:background-image="url({imgUrl})" />
+    <div class="product-img-preview" style:background-image="url({value})" />
   </div>
 </div>
 
@@ -28,9 +25,14 @@
     gap: 1em;
   }
 
+  .url-input {
+    height: 2rem;
+    place-self: center;
+  }
+
   .product-img-preview {
     aspect-ratio: 1;
-    height: 215%;
+    height: 5rem;
     width: fit-content;
     place-self: center;
     border: 1px solid #ccc;

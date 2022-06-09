@@ -1,22 +1,25 @@
 <script>
   import { v4 as uuidv4 } from "uuid"
-  import { contentMain } from "../stores/newsletter"
-  import InputFieldset from "./inputs/InputFieldset.svelte"
-  import InputSingleOffer from "./inputs/InputSingleOffer.svelte"
-  import InputContentImage from "./inputs/InputContentImage.svelte"
-  import InputContentTextBlock from "./inputs/InputContentTextBlock.svelte"
-  import BaseButton from "./BaseButton.svelte"
+  import { contentMain } from "../../stores/newsletter"
+  import InputFieldset from "./InputFieldset.svelte"
+  import InputSingleOffer from "./InputSingleOffer.svelte"
+  import InputContentImage from "./InputContentImage.svelte"
+  import InputContentTextBlock from "./InputContentTextBlock.svelte"
+  import InputContentHtml from "./InputContentHtml.svelte"
+  import BaseButton from "../BaseButton.svelte"
 
   import {
     singleOffer,
     contentImage,
     contentTextBlock,
-  } from "../helpers/blueprints"
+    contentHtml,
+  } from "../../helpers/blueprints"
 
   const inputComponents = {
     singleOffer: InputSingleOffer,
     contentImage: InputContentImage,
     contentTextBlock: InputContentTextBlock,
+    contentHtml: InputContentHtml,
   }
 
   function addContentItem(type) {
@@ -39,6 +42,10 @@
       $contentMain = [...$contentMain, { ...newContentTextBlock, id: itemId }]
       return
     }
+    if (type === "contentHtml") {
+      const newHtml = structuredClone(contentHtml)
+      $contentMain = [...$contentMain, { ...newHtml, id: itemId }]
+    }
   }
 
   function deleteContentItem(e) {
@@ -54,22 +61,26 @@
       on:btnClick={() => addContentItem("singleOffer")}
       classes="btn-add first-btn"
     >
-      + Angebot einzeln
+      Angebot einzeln
     </BaseButton>
     <BaseButton
       on:btnClick={() => addContentItem("contentImage")}
       classes="btn-add middle-btn"
     >
-      + Bild
+      Bild
     </BaseButton>
     <BaseButton
       on:btnClick={() => addContentItem("contentTextBlock")}
-      classes="btn-add last-btn">+ Textblock</BaseButton
+      classes="btn-add middle-btn">Textblock</BaseButton
+    >
+    <BaseButton
+      on:btnClick={() => addContentItem("contentHtml")}
+      classes="btn-add last-btn">HTML</BaseButton
     >
   </div>
   {#if $contentMain.length}
     <div class="mt-2">
-      {#each $contentMain as item (item.id)}
+      {#each $contentMain as item, i (item.id)}
         <svelte:component
           this={inputComponents[item.type]}
           {item}

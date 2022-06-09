@@ -5,7 +5,7 @@
     { name: "Header", link: "header" },
     { name: "Intro", link: "intro" },
     { name: "Main Content", link: "mainContent" },
-    { name: "Offers", link: "offers" },
+    { name: "Angebote", link: "offers" },
   ]
 </script>
 

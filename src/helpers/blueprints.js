@@ -1,10 +1,10 @@
 export const singleOffer = {
   type: "singleOffer",
-  productName: "",
+  productName: "PRODUKT",
   productLink: "",
   productImgSrc: "",
   productImgAlt: "",
-  productDesc: "",
+  productDesc: { text: "" },
   priceFull: 0,
   hasIndividualDiscount: false,
   individualDiscount: 0,
@@ -27,4 +27,9 @@ export const contentTextBlock = {
     text: "",
     align: "center",
   },
+}
+
+export const contentHtml = {
+  type: "contentHtml",
+  content: `<td></td>`,
 }

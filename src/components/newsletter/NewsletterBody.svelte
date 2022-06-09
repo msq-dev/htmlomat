@@ -1,12 +1,12 @@
 <script>
   import { contentMain } from "../../stores/newsletter"
-  import { clrText } from "../../stores/styling"
   import NewsletterHeader from "./NewsletterHeader.svelte"
   import NewsletterHero from "./NewsletterHero.svelte"
   import NewsletterIntro from "./NewsletterIntro.svelte"
   import NewsletterSingleOffer from "./NewsletterSingleOffer.svelte"
   import NewsletterContentImage from "./NewsletterContentImage.svelte"
   import NewsletterContentTextBlock from "./NewsletterContentTextBlock.svelte"
+  import NewsletterContentHtml from "./NewsletterContentHtml.svelte"
   import NewsletterOfferRows from "./NewsletterOfferRows.svelte"
   import NewsletterSocial from "./NewsletterSocial.svelte"
 
@@ -14,6 +14,7 @@
     singleOffer: NewsletterSingleOffer,
     contentImage: NewsletterContentImage,
     contentTextBlock: NewsletterContentTextBlock,
+    contentHtml: NewsletterContentHtml,
   }
 </script>
 
@@ -23,7 +24,7 @@
   border="0"
   width="580"
   bgcolor="#ffffff"
-  style="font-family: Arial; color: {$clrText}; margin-top: 10px; margin-bottom: 10px; border: 1px solid #d7d7d7;"
+  style="margin-top: 10px; margin-bottom: 10px; border: 1px solid #d7d7d7;"
 >
   <NewsletterHeader />
   <NewsletterHero />
