@@ -4,7 +4,7 @@ export const singleOffer = {
   productLink: "",
   productImgSrc: "",
   productImgAlt: "",
-  productDesc: { text: "" },
+  productDesc: { text: "", align: "center" },
   priceFull: 0,
   hasIndividualDiscount: false,
   individualDiscount: 0,

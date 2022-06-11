@@ -27,12 +27,10 @@
       bind:value={item.productImgAlt}
     />
 
-    {#if item.productDesc.text}
-      <InputGroupTextarea
-        label="Product Description"
-        bind:value={item.productDesc}
-      />
-    {/if}
+    <InputGroupTextarea
+      label="Product Description"
+      bind:value={item.productDesc}
+    />
 
     <div class="price-grid">
       <InputNumber

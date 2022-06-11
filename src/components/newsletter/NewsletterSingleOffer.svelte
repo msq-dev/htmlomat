@@ -62,14 +62,14 @@
         <strong>
           {#if $switchPrices}
             <span
-              style="font-size: 36px; text-decoration: line-through; color: {$clrText};"
+              style="font-size: 30px; text-decoration: line-through; color: {$clrText};"
             >
               {prettyPrice(item.priceFull)}</span
             >
 
             &nbsp;
 
-            <span style="font-size: 28px; color: {$clrDiscount};"
+            <span style="font-size: 30px; color: {$clrDiscount};"
               >{prettyPrice(priceDiscount)}</span
             >
           {:else}

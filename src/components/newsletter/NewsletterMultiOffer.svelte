@@ -51,7 +51,7 @@
     <p
       style="
       {fontFamily};
-      font-size: 20px;
+      font-size: 24px;
       text-align: center;
       color: {$clrDiscount};
       "

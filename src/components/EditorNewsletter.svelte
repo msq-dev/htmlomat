@@ -22,6 +22,7 @@
   import SectionInputIntro from "./inputs/SectionInputIntro.svelte"
   import SectionInputMainContent from "./inputs/SectionInputMainContent.svelte"
   import SectionInputOffers from "./inputs/SectionInputOffers.svelte"
+  import NewsletterEmail from "./newsletter/NewsletterEmail.svelte"
 
   const sections = {
     header: SectionInputHeader,
@@ -71,6 +72,9 @@
     <div class="current-input">
       <svelte:component this={sections[$currentInputSection]} />
     </div>
+    <div class="preview-frame">
+      <NewsletterEmail />
+    </div>
   </main>
 </span>
 
@@ -88,7 +92,13 @@
 
   main {
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: max-content 65ch 10ch;
     gap: 1em;
+    width: 100%;
+  }
+
+  .preview-frame {
+    transform: scale(0.4);
+    transform-origin: top right;
   }
 </style>
