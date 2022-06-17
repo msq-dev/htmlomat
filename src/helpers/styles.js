@@ -35,5 +35,5 @@ export const normal400 = fontFace(webFont, style["normal"], 400)
 export const normal700 = fontFace(webFont, style["normal"], 700)
 export const italic400 = fontFace(webFont, style["italic"], 400)
 export const italic700 = fontFace(webFont, style["italic"], 700)
-export const fontFamily = `font-family: Arial, sans-serif`
+export const fontFamily = `font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif`
 // export const fontFamily = `font-family: ${webFont}, Helvetica, Arial, sans-serif`

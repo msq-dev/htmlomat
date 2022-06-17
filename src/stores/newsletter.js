@@ -1,29 +1,57 @@
-import { writable } from "svelte/store"
+import { writable, derived } from "svelte/store"
 import { todaysDate } from "../helpers/utils"
-import { BASE_URL } from "./editor"
+// import { BASE_URL } from "./editor"
 
-export const nameCompany = writable("Manuka")
+const companies = {
+  manuka: {
+    logoUrl: "https://www.manuka-honig.de/media/image/3e/fb/e9/logo_big.jpg",
+    fullName: "Manukanuka GmbH",
+    tel: "030 / 921 094 760",
+    email: "info@manuka-honig.de",
+    website: "https://manuka-honig.de",
+    websiteAnchor: "Manuka Honig Shop",
+    footerImgUrl:
+      "https://www.manuka-honig.de/media/image/67/71/9f/footer-biene-faqjpg.jpg",
+    footerImgAlt: "Manuka Honig aus Neuseeland",
+    footerImgTarget:
+      "https://www.manuka-honig.de/wissenswertes/haeufig-gestellte-fragen/",
+  },
+  ayursana: {
+    logoUrl:
+      "https://i.ytimg.com/vi/nrQNDcZjErw/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLAV8NY31V6JMvYQqVEvDNL7CLqkDQ",
+    fullName: "Ayursana GmbH",
+    tel: "030 / 000 000 000",
+    email: "info@ayursana-embio.com",
+    website: "https://ayursana-embio.com",
+    websiteAnchor: "Ayursana Shop",
+    footerImgUrl:
+      "https://i.ytimg.com/vi/cwXPPGQQW1k/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLBGAXNae2ofgbRlqKwy8eF75CgoRA",
+    footerImgAlt: "",
+    footerImgTarget: "",
+  },
+}
+
+export const companyName = writable("manuka")
+export const companyProps = derived(
+  companyName,
+  ($companyName) => companies[$companyName]
+)
 
 export const mailTitle = writable(`Ihr Newsletter vom ${todaysDate()}`)
 // export const landingpage = writable(BASE_URL + "/landingpage")
-export const landingpage = writable("https://www.manuka-honig.de/angebote")
-export const heroImgSrc = writable(
-  "https://www.manuka-honig.de/media/image/48/9e/2f/newsletter-manuka-health-hautpflege-header.jpg"
-)
 
-export const heroImgAlt = writable("Ohne Honich? Ohne mich!")
+export const mailHero = writable({
+  imgSrc:
+    "https://www.manuka-honig.de/media/image/48/9e/2f/newsletter-manuka-health-hautpflege-header.jpg",
+  imgAlt: "Ohne Honich? Ohne mich!",
+  href: "https://www.manuka-honig.de/angebote",
+  margin: {
+    top: 24,
+    bottom: 48,
+  },
+})
 
-export const introHeadline = writable("Herzlich Lorem bei Ipsum!")
-export const introParagraphs = writable([
-  {
-    text: "Warum verlebt Sie daß ziemlich bewegen, was Thomas in fest Wesen. Nie Sie Bekanntschaft seine zu Internet eigentlich ihn, die will geringste Hemd eingeliefert. Oliver Bestechung alles zu Decke. Mit zwar den sich zu Chancen, der war über Stock das an im, sich möglichst werden bloß würden Spaß.",
-    align: "left",
-  },
-  {
-    text: "Das sieht beisammen sie benommen waren, stand Nase dem Vorgang gewonnen. Das auf mit setzte dieser Morgens, was diesmal immer zurück Ende. Ich eingeleitet er jenes dies erreichte wohin vernehmen er knapp, läutete über bereiteten Unterstützung seines.",
-    align: "center",
-  },
-])
+export const mailMainContent = writable([])
 
 export const contentMain = writable([
   {

@@ -2,19 +2,18 @@
   import { htmlomat } from "./stores/settings"
   import { previewMode } from "./stores/editor"
   import EditorNewsletter from "./components/EditorNewsletter.svelte"
-  import PreviewNewsletter from "./components/PreviewNewsletter.svelte"
-  import EditorLandingpage from "./components/EditorLandingpage.svelte"
-  import PreviewLandingpage from "./components/PreviewLandingpage.svelte"
+  // import PreviewNewsletter from "./components/PreviewNewsletter.svelte"
+  // import EditorLandingpage from "./components/EditorLandingpage.svelte"
+  // import PreviewLandingpage from "./components/PreviewLandingpage.svelte"
 
   const previews = {
-    newsletter: PreviewNewsletter,
-    landingpage: EditorLandingpage,
-    // landingpage: PreviewLandingpage,
+    newsletter: EditorNewsletter,
+    landingpage: EditorNewsletter,
   }
 
   const editors = {
     newsletter: EditorNewsletter,
-    landingpage: EditorLandingpage,
+    landingpage: EditorNewsletter,
   }
 </script>
 
